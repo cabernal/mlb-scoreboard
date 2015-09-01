@@ -18,6 +18,10 @@
     text-align: right;
 }
 
+.team-winner{
+    font-weight: bold;
+}
+
 ul {
     list-style-type:none;
     text-align: center;

@@ -1,5 +1,3 @@
-//TODO: Add NULL checks, proper dates
-
 // Constants
 var GD2_MLB_BASE = 'http://gd2.mlb.com/components/game/mlb';
 var MASTER_SCOREBOARD = 'master_scoreboard.json';

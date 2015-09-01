@@ -95,18 +95,38 @@ function make_scores_board(games) {
         // create sublist containing specific match information
         var match_info = document.createElement('ul');
         match_info.className = 'scorecard';
+
+        // home team information template
         var home_team_item = document.createElement('li');
+        var home_team_name = document.createElement('p');
+        var home_team_wins = document.createElement('p');
+        home_team_name.className = 'team-name';
+        home_team_wins.className = 'team-wins';
+
+        // away team information template
         var away_team_item = document.createElement('li');
+        var away_team_name = document.createElement('p');
+        var away_team_wins = document.createElement('p');
+        away_team_name.className = 'team-name';
+        away_team_wins.className = 'team-wins';
+
+        // match status template
         var match_status_item = document.createElement('li');
 
+        // gather match information
+        home_team_name.innerHTML = matches[i].home_team_name;
+        home_team_wins.innerHTML = matches[i].home_win;
+        away_team_name.innerHTML = matches[i].away_team_name;
+        away_team_wins.innerHTML = matches[i].away_win;
+
         // populate home team info
-        home_team_item.appendChild(document.createTextNode(matches[i].home_team_name));
-        home_team_item.appendChild(document.createTextNode(matches[i].home_win));
+        home_team_item.appendChild(home_team_name);
+        home_team_item.appendChild(home_team_wins);
         match_info.appendChild(home_team_item);
 
         // populate away team info
-        away_team_item.appendChild(document.createTextNode(matches[i].away_team_name));
-        away_team_item.appendChild(document.createTextNode(matches[i].away_win));
+        away_team_item.appendChild(away_team_name);
+        away_team_item.appendChild(away_team_wins);
         match_info.appendChild(away_team_item);
 
         //populate status info

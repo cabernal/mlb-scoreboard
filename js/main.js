@@ -19,7 +19,7 @@ function get_date(){
     date_map['year'] = date.getFullYear();
     // prepend a zero single digit months and days
     date_map['month'] = ("0" + (date.getMonth() + 1)).slice(-2);
-    date_map['day'] =  ("0" + (date.getDay())).slice(-2);
+    date_map['day'] =  ("0" + (date.getDate())).slice(-2);
 
     return date_map;
 }
@@ -87,13 +87,15 @@ function clear_scoreboard(){
 
 // get match winner
 function get_winner(match){
-    var home_wins = parseInt(match.home_win);
-    var away_wins = parseInt(match.away_win);
+    if(match.hasOwnProperty('linescore')){
+        var home_wins = parseInt(((match.linescore).r).home);
+        var away_wins = parseInt(((match.linescore).r).away);
 
-    if (home_wins > away_wins) {
-        return teams.HOME;
-    } else if ( home_wins < away_wins){
-        return teams.AWAY;
+        if (home_wins > away_wins) {
+            return teams.HOME;
+        } else if ( home_wins < away_wins){
+            return teams.AWAY;
+        }
     }
     return teams.NONE;
 }
@@ -104,6 +106,12 @@ function make_scores_board(games) {
     var scores_list = document.getElementById('scores-list');
 
     var matches = games.game;
+
+    // check if there are games that day
+    if(!games.hasOwnProperty('game')){
+        scores_list.innerHTML = "No games today";
+        return scores_list;
+    }
     for(var i = 0; i < matches.length; i++){
         // create list item containing match information
         var match_item = document.createElement('li');
@@ -133,9 +141,13 @@ function make_scores_board(games) {
 
         // gather match information
         home_team_name.innerHTML = matches[i].home_team_name;
-        home_team_wins.innerHTML = matches[i].home_win;
         away_team_name.innerHTML = matches[i].away_team_name;
-        away_team_wins.innerHTML = matches[i].away_win;
+
+        // set linescore if available
+        if(matches[i].hasOwnProperty('linescore')){
+            home_team_wins.innerHTML = ((matches[i].linescore).r).home;
+            away_team_wins.innerHTML = ((matches[i].linescore).r).away;
+        }
 
         // populate home team info
         home_team_item.appendChild(home_team_name);

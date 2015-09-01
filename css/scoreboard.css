@@ -5,5 +5,10 @@
 
 ul {
     list-style-type:none;
+}
 
+.date{
+    width: 200px;
+    display: inline-block;
+    text-align: center;
 }

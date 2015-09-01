@@ -6,14 +6,19 @@
     <meta content="utf-8" http-equiv="encoding">
     <!-- link css/js -->
     <link rel="stylesheet" type="text/css" href="css/scoreboard.css">
-    <script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/jquery-ui-1.11.4/jquery-ui.css">
+    <script type="text/javascript" src="lib/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery-ui-1.11.4/jquery-ui.js"></script>
+
 </head>
 
 <body>
     <div id="scorecard-container">
+        <a href="" class="date" id="previous">&laquo</a>
+        <p class="date"><input type="text" id="date-picker"></p>
+        <a href="" class="date"id="next">&raquo</a>
         <ul id='scores-list'>
-            <il id="date-picker">
-            </il>
+
         </ul>
     </div>
 </body>
